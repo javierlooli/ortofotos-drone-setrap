@@ -55,7 +55,7 @@ header{
 .hero p{
     position:relative;
     z-index:2;
-    color:white;
+    color:rgb(255, 255, 255);
 }
 
 .hero h2{
