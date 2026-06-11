@@ -34,7 +34,7 @@ header{
 .hero{
     position:relative;
 
-    background-image:url("imagens/PADRÃO.png");
+    background-image:url("imagens/fundo.png");
     background-size:cover;
     background-position:center;
 
