@@ -42,69 +42,73 @@
 </head>
 
 <body>
-  <div id="map"></div>
 
-  <div class="titulo-mapa">
-    <strong>Sítio Campo Alegre</strong><br>
-    Ortofoto por drone
-  </div>
+<div id="map"></div>
 
-  <div class="coord-box" id="coords">
-    Lat: -- | Lon: --
-  </div>
+<div class="titulo-mapa">
+  <strong>Sítio Campo Alegre</strong><br>
+  Ortofoto por Germán Javier Loo Li Neto
+</div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.js"></script>
-  <script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
+<div class="coord-box" id="coords">
+  Lat: -- | Lon: --
+</div>
 
-  <script>
-    const map = L.map('map', {
-      center: [0.2578, -51.0124],
-      zoom: 18,
-      minZoom: 17,
-      maxZoom: 23,
-      fullscreenControl: true
-    });
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.js"></script>
+<script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
 
-    const ortofoto = L.tileLayer('./tiles/{z}/{x}/{y}.jpg', {
-      minZoom: 17,
-      maxZoom: 23,
-      tileSize: 256,
-      tms: true,
-      attribution: 'Ortofoto - Sítio Campo Alegre'
-    }).addTo(map);
+<script>
 
-    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap'
-    });
+const map = L.map('map', {
+  center: [0.2578, -51.0124],
+  zoom: 18,
+  minZoom: 17,
+  maxZoom: 23,
+  fullscreenControl: true
+});
 
-    const baseMaps = {
-      "Ortofoto Campo Alegre": ortofoto,
-      "OpenStreetMap": osm
-    };
+const ortofoto = L.tileLayer('./tiles2/{z}/{x}/{y}.jpg', {
+  minZoom: 17,
+  maxZoom: 23,
+  tileSize: 256,
+  tms: true,
+  attribution: 'Ortofoto - Sítio Campo Alegre'
+}).addTo(map);
 
-    L.control.layers(baseMaps, null, {
-      collapsed: false
-    }).addTo(map);
+const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap'
+});
 
-    L.control.scale({
-      metric: true,
-      imperial: false
-    }).addTo(map);
+const baseMaps = {
+  "Ortofoto Campo Alegre": ortofoto,
+  "OpenStreetMap": osm
+};
 
-    L.control.measure({
-      primaryLengthUnit: 'meters',
-      secondaryLengthUnit: 'kilometers',
-      primaryAreaUnit: 'sqmeters',
-      secondaryAreaUnit: 'hectares'
-    }).addTo(map);
+L.control.layers(baseMaps, null, {
+  collapsed: false
+}).addTo(map);
 
-    map.on('mousemove', function(e) {
-      document.getElementById('coords').innerHTML =
-        'Lat: ' + e.latlng.lat.toFixed(6) +
-        ' | Lon: ' + e.latlng.lng.toFixed(6);
-    });
-  </script>
+L.control.scale({
+  metric: true,
+  imperial: false
+}).addTo(map);
+
+L.control.measure({
+  primaryLengthUnit: 'meters',
+  secondaryLengthUnit: 'kilometers',
+  primaryAreaUnit: 'sqmeters',
+  secondaryAreaUnit: 'hectares'
+}).addTo(map);
+
+map.on('mousemove', function(e) {
+  document.getElementById('coords').innerHTML =
+    'Lat: ' + e.latlng.lat.toFixed(6) +
+    ' | Lon: ' + e.latlng.lng.toFixed(6);
+});
+
+</script>
+
 </body>
 </html>
