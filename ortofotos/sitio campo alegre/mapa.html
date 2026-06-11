@@ -19,7 +19,7 @@
       top: 12px;
       left: 55px;
       z-index: 1000;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.90);
       color: white;
       padding: 10px 14px;
       border-radius: 8px;
@@ -32,7 +32,7 @@
       bottom: 18px;
       left: 12px;
       z-index: 1000;
-      background: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.90);
       padding: 6px 10px;
       border-radius: 6px;
       font-family: Arial, sans-serif;
@@ -66,7 +66,7 @@
       fullscreenControl: true
     });
 
-    const ortofoto = L.tileLayer('./{z}/{x}/{y}.jpg', {
+    const ortofoto = L.tileLayer('./tiles/{z}/{x}/{y}.jpg', {
       minZoom: 17,
       maxZoom: 23,
       tileSize: 256,
@@ -97,9 +97,7 @@
       primaryLengthUnit: 'meters',
       secondaryLengthUnit: 'kilometers',
       primaryAreaUnit: 'sqmeters',
-      secondaryAreaUnit: 'hectares',
-      activeColor: '#ffcc00',
-      completedColor: '#ff9900'
+      secondaryAreaUnit: 'hectares'
     }).addTo(map);
 
     map.on('mousemove', function(e) {
