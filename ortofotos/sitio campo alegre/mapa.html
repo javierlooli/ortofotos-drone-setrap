@@ -2,10 +2,37 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=tiles/leaflet.html">
-<title>Ponte do Matapi</title>
+<title>Sítio Campo Alegre</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+html,body,#map{
+height:100%;
+margin:0;
+}
+</style>
+
 </head>
 <body>
-Redirecionando...
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+var map = L.map('map');
+
+L.tileLayer('./tiles/{z}/{x}/{y}.jpg', {
+    maxZoom: 23,
+    minZoom: 16
+}).addTo(map);
+
+map.setView([0.257,-51.012],18);
+
+</script>
+
 </body>
 </html>
