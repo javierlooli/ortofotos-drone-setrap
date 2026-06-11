@@ -5,11 +5,38 @@
   <title>Sítio Campo Alegre</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.css">
 
   <style>
     html, body, #map {
       height: 100%;
       margin: 0;
+    }
+
+    .titulo-mapa {
+      position: absolute;
+      top: 12px;
+      left: 55px;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.9);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+
+    .coord-box {
+      position: absolute;
+      bottom: 18px;
+      left: 12px;
+      z-index: 1000;
+      background: rgba(255,255,255,.9);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -17,22 +44,69 @@
 <body>
   <div id="map"></div>
 
+  <div class="titulo-mapa">
+    <strong>Sítio Campo Alegre</strong><br>
+    Ortofoto por drone
+  </div>
+
+  <div class="coord-box" id="coords">
+    Lat: -- | Lon: --
+  </div>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.fullscreen@3.0.2/Control.FullScreen.js"></script>
+  <script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
 
   <script>
     const map = L.map('map', {
+      center: [0.2578, -51.0124],
+      zoom: 18,
       minZoom: 17,
-      maxZoom: 23
+      maxZoom: 23,
+      fullscreenControl: true
     });
 
-    L.tileLayer('./{z}/{x}/{y}.jpg', {
+    const ortofoto = L.tileLayer('./{z}/{x}/{y}.jpg', {
       minZoom: 17,
       maxZoom: 23,
       tileSize: 256,
-      tms: true
+      tms: true,
+      attribution: 'Ortofoto - Sítio Campo Alegre'
     }).addTo(map);
 
-    map.setView([0.2578, -51.0124], 18);
+    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap'
+    });
+
+    const baseMaps = {
+      "Ortofoto Campo Alegre": ortofoto,
+      "OpenStreetMap": osm
+    };
+
+    L.control.layers(baseMaps, null, {
+      collapsed: false
+    }).addTo(map);
+
+    L.control.scale({
+      metric: true,
+      imperial: false
+    }).addTo(map);
+
+    L.control.measure({
+      primaryLengthUnit: 'meters',
+      secondaryLengthUnit: 'kilometers',
+      primaryAreaUnit: 'sqmeters',
+      secondaryAreaUnit: 'hectares',
+      activeColor: '#ffcc00',
+      completedColor: '#ff9900'
+    }).addTo(map);
+
+    map.on('mousemove', function(e) {
+      document.getElementById('coords').innerHTML =
+        'Lat: ' + e.latlng.lat.toFixed(6) +
+        ' | Lon: ' + e.latlng.lng.toFixed(6);
+    });
   </script>
 </body>
 </html>
