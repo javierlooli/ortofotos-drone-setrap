@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tilemap tilemapservice="http://www.osgeo.org/services/tilemapservice.xml" version="1.0.0">
+<title>My Map Set Name</title>
+<abstract></abstract>
+<srs>EPSG:900913</srs>
+<vsrs></vsrs>
+<boundingbox maxx="-5677890.5577651" maxy="29175.0582336" minx="-5678955.8988468" miny="28214.8180658">
+</boundingbox>
+<origin x="-20037508.3427890" y="-20037508.3427890"></origin>
+<tileformat extension="jpg" height="256" mime-type="image/jpeg" width="256">
+</tileformat>
+<tilesets profile="global-mercator">
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/16" order="16" units-per-pixel="2.3886571"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/17" order="17" units-per-pixel="1.1943286"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/18" order="18" units-per-pixel="0.5971643"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/19" order="19" units-per-pixel="0.2985821"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/20" order="20" units-per-pixel="0.1492911"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/21" order="21" units-per-pixel="0.0746455"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/22" order="22" units-per-pixel="0.0373228"></tileset>
+  <tileset href="C:/Users/Javier/OneDrive/MAPEAMENTO%20DE%20DRONE/SÍTIO%20CAMPO%20ALEGRE/html/23" order="23" units-per-pixel="0.0186614"></tileset>
+</tilesets>
+</tilemap>
